@@ -23,7 +23,7 @@ $(document).ready(function () {
     var timeDifference;
     var timeRem;
     var minutesAway;
-    var nextTrain
+    var nextTrain;
     var nextArrival;
 
     // on click of submit
@@ -37,12 +37,11 @@ $(document).ready(function () {
         freqInMin = $("#freq-input").val().trim();
         // console.log(trainName + destination + userTrainTime + freqInMin);
 
-        // calculate next train time
+        // calculate next arrival and minutes away
         newTrainTime = moment(userTrainTime, "hh:mm").subtract(1, "years");
         timeDifference = moment().diff(moment(newTrainTime), "minutes");
         timeRem = timeDifference % freqInMin;
         minutesAway = freqInMin - timeRem;
-
         nextTrain = moment().add(minutesAway, "minutes");
         nextArrival = moment(nextTrain).format("hh:mm");
 
@@ -79,6 +78,7 @@ $(document).ready(function () {
 
         for (var i = 0; i < snapArray.length; i++) {
             var col = $("<td>");
+            col.addClass("col col-xs-2");
             col.text(snapArray[i]);
             col.appendTo(row);
         }
