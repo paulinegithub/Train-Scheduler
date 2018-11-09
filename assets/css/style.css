@@ -1,54 +1,25 @@
-header {
-    font-size: 48px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-
 .wrapper {
     padding: 20px;
     margin: 0 auto;
     width: 80%;
 }
 
-img {
-    height: 200px;
+.row {
+    margin-bottom: 20px;
 }
 
-.gifDiv:hover {
-    opacity: 0.65;
-    filter: alpha(opacity=65);
+.jumbotron {
+    background-color: light;
 }
 
-.gifDiv {
-    float: left;
-    padding: 5px;
-}
-
-.main {
-    margin: 15px;
-    padding: 5px;
-    text-align: center;
+.card-header {
+    background-color: lightcyan;
 }
 
 form {
     margin: 10px;
-    text-align: center;
 }
 
-.form-control {
-    width: 300px;
-    margin: 0 auto;
-}
-
-input {
-    margin: 5px;
-}
-
-.gifButton {
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
 
 /* Desktop Width at 980px and below */
 @media screen and (max-width: 980px) {
@@ -69,6 +40,7 @@ input {
 
 /* Phone Width at 640px and below */
 @media screen and (max-width: 640px) {
+
     .wrapper,
     .form-control {
         width: 100%;
