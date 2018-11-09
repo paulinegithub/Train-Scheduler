@@ -13,18 +13,11 @@ $(document).ready(function () {
 
     var dataRef = firebase.database();
 
-    //  initial variables
+    // variables for user input
     var trainName;
     var destination;
-    var userTrainTime;
+    var firstTrainTime;
     var freqInMin;
-
-    var newTrainTime;
-    var timeDifference;
-    var timeRem;
-    var minutesAway;
-    var nextTrain;
-    var nextArrival;
 
     // on click of submit
     $("#add-train").on("click", function (event) {
@@ -33,26 +26,15 @@ $(document).ready(function () {
         // get user input
         trainName = $("#train-input").val().trim();
         destination = $("#destination-input").val().trim();
-        userTrainTime = $("#time-input").val().trim();
+        firstTrainTime = $("#time-input").val().trim();
         freqInMin = $("#freq-input").val().trim();
-        // console.log(trainName + destination + userTrainTime + freqInMin);
-
-        // calculate next arrival and minutes away
-        newTrainTime = moment(userTrainTime, "hh:mm").subtract(1, "years");
-        timeDifference = moment().diff(moment(newTrainTime), "minutes");
-        timeRem = timeDifference % freqInMin;
-        minutesAway = freqInMin - timeRem;
-        nextTrain = moment().add(minutesAway, "minutes");
-        nextArrival = moment(nextTrain).format("hh:mm");
 
         // push values to firebase
         dataRef.ref().push({
             trainName: trainName,
             destination: destination,
-            userTrainTime: userTrainTime,
+            firstTrainTime: firstTrainTime,
             freqInMin: freqInMin,
-            nextArrival: nextArrival,
-            minutesAway: minutesAway
         });
 
         // clear input form
@@ -63,17 +45,31 @@ $(document).ready(function () {
 
     });
 
-    // append to train schedule
+    // variables for calculations
+    var newTrainTime;
+    var timeDifference;
+    var timeRem;
+    var minutesAway;
+    var nextArrival;
+
+    // function to calculate nextArrival and minutesAway
+    function getNextTrain(firstTrainTime, freqInMin) {
+
+        // calculate next arrival and minutes away
+        newTrainTime = moment(firstTrainTime, "hh:mm").subtract(1, "years");
+        timeDifference = moment().diff(moment(newTrainTime), "minutes");
+        timeRem = timeDifference % freqInMin;
+        minutesAway = freqInMin - timeRem;
+        nextArrival = moment().add(minutesAway, "minutes").format("hh:mm");
+    }
+
+    // append new train & times to train schedule
     dataRef.ref().on("child_added", function (snap) {
 
-        // variables to hold snapshot info
-        var addTrainName = snap.val().trainName;
-        var addDestination = snap.val().destination;
-        var addFreqInMin = snap.val().freqInMin;
-        var addNextArrival = snap.val().nextArrival;
-        var addMinutesAway = snap.val().minutesAway;
+        getNextTrain(snap.val().firstTrainTime, snap.val().freqInMin);
 
-        var snapArray = [addTrainName, addDestination, addFreqInMin, addNextArrival, addMinutesAway];
+        var snapArray = [snap.val().trainName, snap.val().destination, snap.val().freqInMin, nextArrival, minutesAway];
+
         var row = $("<tr>");
 
         for (var i = 0; i < snapArray.length; i++) {
@@ -85,7 +81,8 @@ $(document).ready(function () {
 
         $("#train-table").append(row);
 
+    }, function (errorObject) {
+        console.log("Errors handled: " + errorObject.code);
     });
-
 
 })
