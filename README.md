@@ -32,8 +32,10 @@ User input is uploaded to and persisted by an associated Firebase database. Trai
 
 ## Built with:
 
+- CSS3
 - [Bootstrap](https://getbootstrap.com/) - Front-end component library for developing with HTML, CSS, and JS.
 - [Firebase](https://firebase.google.com/) - Mobile and web application development platform with database functionality.
+- HTML5
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - High-level programming language.
 - [jQuery](https://jquery.com/) - JavaScript library.
 - [Moment.js](https://momentjs.com/) - Parse, validate, manipulate, and display dates and times in JavaScript.
