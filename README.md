@@ -1,6 +1,6 @@
 # Train Scheduler
 
-## Go to deployed app: [https://plsenh.github.io/Train-Scheduler/](https://plsenh.github.io/Train-Scheduler/)
+## Link to deployed app: [https://plsenh.github.io/Train-Scheduler/](https://plsenh.github.io/Train-Scheduler/)
 
 ![screenshot](./assets/images/TrainScheduler.PNG)
 
