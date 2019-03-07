@@ -10,12 +10,6 @@
 
 View current train schedules, next arrival times, and how may minutes away the next train is. Users can input their own train schedules to add to the table.
 
-## Details:
-
-Data persistence is attained through a Firebase database. The user enters the train name, destination, the time of the first train, and the train frequency in minutes.
-
-When the user enters data into , it is uploaded to a Firebase database. Submitting another train entry refreshes the data, and the calculated data (Next Arrival and Minutes Away) is updated. Refreshing the web browser will also update the data.
-
 ---
 
 ## Built with:
