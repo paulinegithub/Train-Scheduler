@@ -8,9 +8,27 @@
 
 ## Overview:
 
-View current train schedules, next arrival times, and how may minutes away the next train is. Users can input their own train schedules to add to the table.
+App to add and view information on scheduled trains. Add trains to the schedule and see the next arrival time and how may minutes away they are.
+
+## How to Use:
+
+**View train schedule**
+
+Using the sample data from above image, the Local train arrives every 15 minutes and the next arrival is 10:45 AM and it is 8 minutes away.
+
+**Adding a train:**
+
+1. Enter the train name.
+2. Enter destination name.
+3. Enter time of the first train in miltary time using a HH:mm format (i.e. 22:30 instead of 10:30 PM).
+4. Enter the arrival frequency in minutes.
+5. Hit submit and see when the next train will arrive on the updated schedule.
 
 ---
+
+## Technical Details:
+
+User input is uploaded to and persisted by an associated Firebase database. Train information and calculated times are updated when the page is refreshed and when trains are added to the schedule.
 
 ## Built with:
 
