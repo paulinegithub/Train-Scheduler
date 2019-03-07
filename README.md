@@ -39,6 +39,8 @@ User input is uploaded to and persisted by an associated Firebase database. Trai
 - [Moment.js](https://momentjs.com/) - Parse, validate, manipulate, and display dates and times in JavaScript.
 - [Visual Studio Code](https://code.visualstudio.com/) - source code editor developed by Microsoft.
 
+---
+
 ## Author:
 
 - **Pauline Senh** - [plsenh](https://github.com/plsenh)
